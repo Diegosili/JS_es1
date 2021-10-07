@@ -3,7 +3,43 @@
     <title>ES 1</title>
   </head>
   <body>
-    <buttoon onclick="function () {
-      console.log(\'click')}">cliccami</buttoon>
+    <button onclick="console.log('click')">cliccami da evento</button>
+    <button onclick="funzioneClick('script')">cliccami da script</button>
+    <div id="div1">
+      <p>Non premere, per cortesia</p>
+    </div>
+    <button id="btn3">cliccami da listener</button>
+
+    <script>
+      // var funzioneClick = function(){
+      //   console.log("click da script");
+      // };
+      // funzioneClick();
+      // Funzione la "Self Declaretion and Execution", dove dichiarando una funzione è possibile richiamarla
+
+      var funzioneClick = function(stringa){
+        console.log("click da "+stringa);
+      };
+
+      var rosso = true;
+      var bottone3 = document.getElementById("btn3");
+      bottone3.addEventListener("click", function(){
+        funzioneClick('listener');
+
+        document.getElementById("div1").setAttribute("style", "color: violet");
+        document.getElementById("div1").innerHTML = 
+          "<h1>TI AVEVO DETTO DI NON CLICCARE MONA</h1>"
+
+        if (rosso === false) {
+          bottone3.setAttribute("style","background-color: red");
+          rosso = true;
+        } else {
+          bottone3.setAttribute("style","background-color: default");
+          rosso = false;
+        };
+        }
+        );
+
+    </script>
   </body>
 </html>
